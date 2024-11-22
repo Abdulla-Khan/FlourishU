@@ -1,4 +1,4 @@
-import 'package:flourish/views/auth/login/login_view.dart';
+import '../../components/common/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -27,7 +27,7 @@ class ForgotPasswordConfirmation extends StatelessWidget {
                     child: Center(
                       child: SvgPicture.asset(
                         'assets/logo/logo.svg',
-                        height: 130,
+                        height: context.height * 0.14,
                       ),
                     ),
                   ),
@@ -36,7 +36,6 @@ class ForgotPasswordConfirmation extends StatelessWidget {
                   ),
                 ],
               ),
-
               const Spacer(),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -110,7 +109,6 @@ class ForgotPasswordConfirmation extends StatelessWidget {
               const Spacer(
                 flex: 2,
               ),
-              // Spacer(),
             ],
           ),
         ),

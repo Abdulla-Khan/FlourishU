@@ -1,5 +1,6 @@
 import 'package:flourish/utils/constants/colors.dart';
-import 'package:flourish/views/auth/login/login_view.dart';
+
+import '../../components/common/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ class EmailVerifyView extends GetView<EmailVerifyController> {
                   tag: "auth-logo",
                   child: SvgPicture.asset(
                     'assets/logo/logo.svg',
-                    height: 130,
+                    height: context.height * 0.14,
                   ),
                 ),
               ),

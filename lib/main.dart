@@ -1,7 +1,6 @@
 import 'package:flourish/utils/bindings/bindings.dart';
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/routes/routes.dart';
-import 'package:flourish/views/auth/forgot_password/forgot_password_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +16,6 @@ class FlourishApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: GetMaterialApp(
-        // home: const ForgotPasswordView(),
         getPages: routes,
         initialBinding: ControllerBinding(),
         title: 'Flourish',

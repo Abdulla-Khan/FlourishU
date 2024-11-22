@@ -1,21 +1,21 @@
-import 'package:flourish/views/auth/login/login_view.dart';
+import 'package:flourish/controllers/reset_password_controller.dart';
+import 'package:flourish/utils/services/form_validation_service.dart';
+import '../../components/common/custom_button.dart';
 import 'package:flourish/views/components/common/textfield.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
-
 import '../../../utils/constants/colors.dart';
 
-class ResetPasswordView extends GetView {
+class ResetPasswordView extends GetView<ResetPasswordController> {
   const ResetPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SizedBox(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -32,7 +32,7 @@ class ResetPasswordView extends GetView {
                     child: Center(
                       child: SvgPicture.asset(
                         'assets/logo/logo.svg',
-                        height: 130,
+                        height: context.height * 0.14,
                       ),
                     ),
                   ),
@@ -64,7 +64,7 @@ class ResetPasswordView extends GetView {
                       margin: const EdgeInsets.symmetric(vertical: 20),
                       alignment: Alignment.center,
                       child: Pinput(
-                        controller: TextEditingController(),
+                        controller: controller.otpController,
                         length: 4,
                         defaultPinTheme: PinTheme(
                           width: 55,
@@ -85,10 +85,18 @@ class ResetPasswordView extends GetView {
                       color: Colors.black.withOpacity(0.2),
                     ),
                     PasswordFeild(
-                        name: "New Password",
-                        controller: TextEditingController()),
+                      name: "New Password",
+                      controller: controller.passwordController,
+                      errorMessage: controller.passwordError.value,
+                      validator: (value) =>
+                          controller.passwordError.value.isEmpty
+                              ? null
+                              : controller.passwordError.value,
+                      onChanged: (value) => validateCompletePassword(
+                          value, controller.passwordError),
+                    ),
+                    CustomButton(text: "Reset Password", onTap: () {}),
                     const Spacer(),
-                    CustomButton(text: "Reset Password", onTap: () {})
                   ],
                 ),
               ),
