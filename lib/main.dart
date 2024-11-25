@@ -1,6 +1,5 @@
 import 'package:flourish/utils/bindings/bindings.dart';
 import 'package:flourish/utils/constants/colors.dart';
-import 'package:flourish/utils/routes/routes.dart';
 import 'package:flourish/views/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
@@ -19,7 +18,7 @@ class FlourishApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: GetMaterialApp(
-        home: HomeView(),
+        home: const HomeView(),
         // getPages: routes,
         initialBinding: ControllerBinding(),
         title: 'Flourish',
