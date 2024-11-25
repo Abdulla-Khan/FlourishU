@@ -3,11 +3,10 @@ import 'dart:developer';
 
 import 'package:flourish/utils/services/api_service.dart';
 import 'package:flourish/utils/services/local_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EmailVerifyController extends GetxController {
-  Rx<TextEditingController> otpController = TextEditingController().obs;
+  RxString otp = "".obs;
   final ApiService apiService = ApiService();
   RxBool isLoading = false.obs;
   String? name;
@@ -27,8 +26,8 @@ class EmailVerifyController extends GetxController {
   Future<void> verifyEmail() async {
     isLoading.value = true;
     try {
-      final response = await apiService.postRequest('auth/verify-account',
-          {"email": email, "code": otpController.value.text});
+      final response = await apiService.postRequest(
+          'auth/verify-account', {"email": email, "code": otp.value});
       if (response.statusCode == 200) {
         signUpUser();
       }

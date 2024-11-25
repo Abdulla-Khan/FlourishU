@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flourish/utils/constants/colors.dart';
 
 import '../../components/common/custom_button.dart';
@@ -53,7 +55,9 @@ class EmailVerifyView extends GetView<EmailVerifyController> {
                 margin: const EdgeInsets.symmetric(vertical: 50),
                 alignment: Alignment.center,
                 child: Pinput(
-                  controller: controller.otpController.value,
+                  onChanged: (value) {
+                    controller.otp.value = value;
+                  },
                   length: 4,
                   separatorBuilder: (index) => Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -69,12 +73,13 @@ class EmailVerifyView extends GetView<EmailVerifyController> {
                         color: authTextColor,
                         fontWeight: FontWeight.w600),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(width: 1, color: authTextColor)),
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(width: 1, color: authTextColor),
+                    ),
                   ),
                 ),
               ),
-              Obx(() => controller.otpController.value.text.length == 4
+              Obx(() => controller.otp.value.length == 4
                   ? controller.isLoading.value == false
                       ? Column(
                           children: [
