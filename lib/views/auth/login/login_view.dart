@@ -155,13 +155,20 @@ class LoginView extends GetView<LoginController> {
                               )
                             ],
                           ),
-                          CustomButton(
-                            text: "Login",
-                            onTap: () {
-                              controller.validateForm()
-                                  ? log('Route to Home')
-                                  : log("Show Error");
-                            },
+                          Obx(
+                            () => controller.isLoading.value
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                        color: textBtnColor),
+                                  )
+                                : CustomButton(
+                                    text: "Login",
+                                    onTap: () {
+                                      controller.validateForm()
+                                          ? controller.login()
+                                          : log("Show Error");
+                                    },
+                                  ),
                           ),
                           const Spacer(),
                           Row(

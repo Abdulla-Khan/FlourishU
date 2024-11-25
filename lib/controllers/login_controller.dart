@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flourish/utils/services/api_service.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,17 +15,14 @@ class LoginController extends GetxController {
   RxBool isLoading = false.obs;
   TextEditingController passwordController = TextEditingController();
   RxString passwordError = ''.obs;
+  final ApiService apiService = ApiService();
   @override
   void onInit() {
     super.onInit();
-
-    // Determine if animation should be shown
     bool showAnimation = Get.arguments?['showAnimation'] ?? true;
-
     if (showAnimation) {
       _startAnimation();
     } else {
-      // Directly show the logo on top and fields
       isLogoVisible.value = true;
       isLogoOnTop.value = true;
       showFields.value = true;
@@ -52,5 +52,32 @@ class LoginController extends GetxController {
     validatePassword(passwordController.text, passwordError);
 
     return emailError.value.isEmpty && passwordError.value.isEmpty;
+  }
+
+  Future<void> login() async {
+    isLoading.value = true;
+    try {
+      final response = await apiService.postRequest('auth/sign-in', {
+        "email": emailController.text,
+        "password": passwordController.text,
+      });
+
+      if (response.statusCode == 200) {
+        log('Home');
+        isLoading.value = false;
+      } else if (response.statusCode == 400) {
+        log("Incorrect Email/Password");
+        isLoading.value = false;
+      } else if (response.statusCode == 404) {
+        log("Account Not Found");
+        isLoading.value = false;
+      } else {
+        log("Bad Request");
+        isLoading.value = false;
+      }
+    } catch (e) {
+      isLoading.value = false;
+      log(e.toString());
+    }
   }
 }
