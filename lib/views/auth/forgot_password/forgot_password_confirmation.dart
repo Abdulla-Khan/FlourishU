@@ -73,7 +73,7 @@ class ForgotPasswordConfirmation extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         children: [
                           Text(
-                            '${Get.arguments == null ? "" : Get.arguments.text}',
+                            '${Get.arguments ?? ""}',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Color(0xFF91A93E),
@@ -100,7 +100,8 @@ class ForgotPasswordConfirmation extends StatelessWidget {
                     ),
                     CustomButton(
                       text: 'Continue',
-                      onTap: () => Get.toNamed('/resetPassword'),
+                      onTap: () => Get.toNamed('/resetPassword',
+                          arguments: Get.arguments),
                       width: context.width * 0.4,
                     )
                   ],

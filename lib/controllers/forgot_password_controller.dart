@@ -16,7 +16,7 @@ class ForgotPasswordController extends GetxController {
       });
 
       if (response.statusCode == 200) {
-        Get.toNamed('/forgotPasswordConfirm', arguments: emailController);
+        Get.toNamed('/forgotPasswordConfirm', arguments: emailController.text);
       } else if (response.statusCode == 400) {
         log('Provide a valid email');
       }

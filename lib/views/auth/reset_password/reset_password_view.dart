@@ -64,7 +64,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       margin: const EdgeInsets.symmetric(vertical: 20),
                       alignment: Alignment.center,
                       child: Pinput(
-                        controller: controller.otpController,
+                        onChanged: (value) => controller.otp.value = value,
                         length: 4,
                         defaultPinTheme: PinTheme(
                           width: 55,
@@ -80,22 +80,50 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                         ),
                       ),
                     ),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.black.withOpacity(0.2),
+                    Obx(
+                      () => Column(
+                        children: [
+                          controller.isOtpVerified.value
+                              ? Divider(
+                                  thickness: 1,
+                                  color: Colors.black.withOpacity(0.2),
+                                )
+                              : const SizedBox.shrink(),
+                          controller.isOtpVerified.value
+                              ? PasswordFeild(
+                                  name: "New Password",
+                                  controller: controller.passwordController,
+                                  errorMessage: controller.passwordError.value,
+                                  validator: (value) =>
+                                      controller.passwordError.value.isEmpty
+                                          ? null
+                                          : controller.passwordError.value,
+                                  onChanged: (value) =>
+                                      validateCompletePassword(
+                                          value, controller.passwordError),
+                                )
+                              : const SizedBox.shrink(),
+                          controller.otp.value.length == 4
+                              ? controller.isLoading.value
+                                  ? const Center(
+                                      child: CircularProgressIndicator())
+                                  : CustomButton(
+                                      text: "Verify Code",
+                                      onTap: () =>
+                                          controller.forgotPasswordVerify())
+                              : const SizedBox.shrink(),
+                          controller.isOtpVerified.value
+                              ? controller.isLoading.value
+                                  ? const Center(
+                                      child: CircularProgressIndicator())
+                                  : CustomButton(
+                                      text: "Change Password",
+                                      onTap: () =>
+                                          controller.updateForgotPassword())
+                              : const SizedBox.shrink(),
+                        ],
+                      ),
                     ),
-                    PasswordFeild(
-                      name: "New Password",
-                      controller: controller.passwordController,
-                      errorMessage: controller.passwordError.value,
-                      validator: (value) =>
-                          controller.passwordError.value.isEmpty
-                              ? null
-                              : controller.passwordError.value,
-                      onChanged: (value) => validateCompletePassword(
-                          value, controller.passwordError),
-                    ),
-                    CustomButton(text: "Reset Password", onTap: () {}),
                     const Spacer(),
                   ],
                 ),
