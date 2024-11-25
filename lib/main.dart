@@ -26,7 +26,7 @@ class FlourishApp extends StatelessWidget {
           fontFamily: 'Roboto',
           textTheme: GoogleFonts.robotoTextTheme(),
           colorScheme:
-              ColorScheme.fromSeed(seedColor: bgColor, primary: bgColor),
+              ColorScheme.fromSeed(primary: textBtnColor, seedColor: bgColor),
           useMaterial3: true,
         ),
       ),

@@ -79,60 +79,62 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                     ))
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Container(
-                  width: context.width * 0.2,
-                  height: context.height * 0.05,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.black.withOpacity(0.2),
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Container(
+                    width: context.width * 0.2,
+                    height: context.height * 0.05,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.black.withOpacity(0.2),
+                      ),
                     ),
+                    child: Text(controller.dob.value.split(' ')[0]),
                   ),
-                  child: Text(controller.dob.value.split(' ')[0]),
-                ),
-                Container(
-                  width: context.width * 0.05,
-                  height: 1,
-                  color: Colors.black.withOpacity(0.2),
-                ),
-                Container(
-                  width: context.width * 0.2,
-                  height: context.height * 0.05,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.black.withOpacity(0.2),
+                  Container(
+                    width: context.width * 0.05,
+                    height: 1,
+                    color: Colors.black.withOpacity(0.2),
+                  ),
+                  Container(
+                    width: context.width * 0.2,
+                    height: context.height * 0.05,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.black.withOpacity(0.2),
+                      ),
                     ),
+                    child: Text(controller.dob.value.split(' ')[1]),
                   ),
-                  child: Text(controller.dob.value.split(' ')[1]),
-                ),
-                Container(
-                  width: context.width * 0.05,
-                  height: 1,
-                  color: Colors.black.withOpacity(0.2),
-                ),
-                Container(
-                  width: context.width * 0.3,
-                  height: context.height * 0.05,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6),
-                    border: Border.all(
-                      width: 1,
-                      color: Colors.black.withOpacity(0.2),
+                  Container(
+                    width: context.width * 0.05,
+                    height: 1,
+                    color: Colors.black.withOpacity(0.2),
+                  ),
+                  Container(
+                    width: context.width * 0.3,
+                    height: context.height * 0.05,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6),
+                      border: Border.all(
+                        width: 1,
+                        color: Colors.black.withOpacity(0.2),
+                      ),
                     ),
-                  ),
-                  child: Text(controller.dob.value.split(' ')[2]),
-                )
-              ],
+                    child: Text(controller.dob.value.split(' ')[2]),
+                  )
+                ],
+              ),
             ),
             HeightPicker(controller: controller),
             WeightPicker(controller: controller),

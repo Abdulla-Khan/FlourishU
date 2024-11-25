@@ -71,7 +71,6 @@ class ApiService {
 
       final response = await request.send();
 
-      // Get response from the stream
       final responseBody = await response.stream.bytesToString();
 
       return http.Response(responseBody, response.statusCode);

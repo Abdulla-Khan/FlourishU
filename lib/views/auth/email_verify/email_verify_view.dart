@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flourish/utils/constants/colors.dart';
-
 import '../../components/common/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

@@ -37,8 +37,9 @@ class OnboardingController extends GetxController {
     pickedDate = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
-        firstDate: DateTime.now(),
-        lastDate: DateTime(2101));
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2101),
+        helpText: "Select Birthdate");
 
     if (pickedDate != null) {
       dob.value = DateFormat('dd MMM yyyy').format(pickedDate!);
