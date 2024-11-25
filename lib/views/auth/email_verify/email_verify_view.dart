@@ -41,9 +41,9 @@ class EmailVerifyView extends GetView<EmailVerifyController> {
                   height: 0,
                 ),
               ),
-              const Text(
-                'We sent a verification code to xyz@helloworld.com',
-                style: TextStyle(
+              Text(
+                'We sent a verification code to ${controller.email}',
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
@@ -53,7 +53,7 @@ class EmailVerifyView extends GetView<EmailVerifyController> {
                 margin: const EdgeInsets.symmetric(vertical: 50),
                 alignment: Alignment.center,
                 child: Pinput(
-                  controller: TextEditingController(),
+                  controller: controller.otpController.value,
                   length: 4,
                   separatorBuilder: (index) => Container(
                     margin: const EdgeInsets.symmetric(horizontal: 10),
@@ -74,21 +74,33 @@ class EmailVerifyView extends GetView<EmailVerifyController> {
                   ),
                 ),
               ),
-              CustomButton(
-                text: "Verify Email",
-                onTap: () => Get.toNamed("/personalInfo"),
-              ),
-              Center(
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    "Resend Code",
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-              )
+              Obx(() => controller.otpController.value.text.length == 4
+                  ? controller.isLoading.value == false
+                      ? Column(
+                          children: [
+                            CustomButton(
+                              text: "Verify Email",
+                              onTap: () => controller.verifyEmail(),
+                            ),
+                            Center(
+                              child: TextButton(
+                                onPressed: () {},
+                                child: const Text(
+                                  "Resend Code",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      : const Center(
+                          child: CircularProgressIndicator(
+                            color: textBtnColor,
+                          ),
+                        )
+                  : const SizedBox.shrink()),
             ],
           ),
         ),

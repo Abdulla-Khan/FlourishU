@@ -1,5 +1,6 @@
 import 'package:flourish/controllers/onboarding_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
+import 'package:flourish/utils/constants/onboarding_lists.dart';
 import 'package:flourish/views/components/onboarding/gender_card.dart';
 import '../../components/common/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                for (var i in controller.genderList)
+                for (var i in genderList)
                   GestureDetector(
                     onTap: () => controller.selectedGender(i['gender']),
                     child: Obx(
@@ -57,15 +58,26 @@ class PersonalDetailForm extends GetView<OnboardingController> {
               thickness: 1,
               color: Colors.black.withOpacity(0.2),
             ),
-            const Text(
-              'Date of Birth',
-              style: TextStyle(
-                color: Color(0xFF6C7278),
-                fontSize: 18,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w500,
-                height: 0,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Date of Birth',
+                  style: TextStyle(
+                    color: Color(0xFF6C7278),
+                    fontSize: 18,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
+                    height: 0,
+                  ),
+                ),
+                IconButton(
+                    onPressed: () => controller.pickDate(context),
+                    icon: const Icon(
+                      Icons.date_range,
+                      color: textBtnColor,
+                    ))
+              ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,6 +86,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                 Container(
                   width: context.width * 0.2,
                   height: context.height * 0.05,
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
                     border: Border.all(
@@ -81,6 +94,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                       color: Colors.black.withOpacity(0.2),
                     ),
                   ),
+                  child: Text(controller.dob.value.split(' ')[0]),
                 ),
                 Container(
                   width: context.width * 0.05,
@@ -90,6 +104,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                 Container(
                   width: context.width * 0.2,
                   height: context.height * 0.05,
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
                     border: Border.all(
@@ -97,6 +112,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                       color: Colors.black.withOpacity(0.2),
                     ),
                   ),
+                  child: Text(controller.dob.value.split(' ')[1]),
                 ),
                 Container(
                   width: context.width * 0.05,
@@ -106,6 +122,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                 Container(
                   width: context.width * 0.3,
                   height: context.height * 0.05,
+                  alignment: Alignment.center,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(6),
                     border: Border.all(
@@ -113,6 +130,7 @@ class PersonalDetailForm extends GetView<OnboardingController> {
                       color: Colors.black.withOpacity(0.2),
                     ),
                   ),
+                  child: Text(controller.dob.value.split(' ')[2]),
                 )
               ],
             ),

@@ -117,10 +117,16 @@ class SignUpView extends GetView<SignUpController> {
                       ],
                     ),
                     const Spacer(),
-                    CustomButton(
-                      text: "Sign up",
-                      onTap: () => Get.toNamed("/verifyEmail"),
-                    ),
+                    controller.isLoading.value == true
+                        ? const CircularProgressIndicator(
+                            color: textBtnColor,
+                          )
+                        : CustomButton(
+                            text: "Sign up",
+                            onTap: () {
+                              controller.getCode();
+                            },
+                          ),
                     const Spacer(
                       flex: 3,
                     ),
@@ -143,7 +149,8 @@ class SignUpView extends GetView<SignUpController> {
                               padding: EdgeInsets.zero,
                             ),
                             onPressed: () {
-                              Get.offNamed('/');
+                              Get.offNamed('/',
+                                  arguments: {'showAnimation': false});
                             },
                             child: const Text(
                               "Log in",

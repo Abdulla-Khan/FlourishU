@@ -16,6 +16,20 @@ class LoginController extends GetxController {
   void onInit() {
     super.onInit();
 
+    // Determine if animation should be shown
+    bool showAnimation = Get.arguments?['showAnimation'] ?? true;
+
+    if (showAnimation) {
+      _startAnimation();
+    } else {
+      // Directly show the logo on top and fields
+      isLogoVisible.value = true;
+      isLogoOnTop.value = true;
+      showFields.value = true;
+    }
+  }
+
+  void _startAnimation() {
     Future.delayed(const Duration(microseconds: 200), () {
       isLogoVisible.value = true;
     });

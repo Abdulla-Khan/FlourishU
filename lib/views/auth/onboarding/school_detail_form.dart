@@ -1,5 +1,6 @@
 import 'package:flourish/controllers/onboarding_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
+import 'package:flourish/utils/constants/onboarding_lists.dart';
 import 'package:flourish/views/components/onboarding/student_dropdown.dart';
 import 'package:flourish/views/components/common/textfield.dart';
 import '../../components/common/custom_button.dart';
@@ -45,7 +46,7 @@ class SchoolDetailForm extends GetView<OnboardingController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            for (var i in controller.schoolsList)
+                            for (var i in schoolsList)
                               InkWell(
                                 onTap: () =>
                                     controller.selectedSchool(i['name']),
@@ -97,7 +98,7 @@ class SchoolDetailForm extends GetView<OnboardingController> {
                           color: Colors.black.withOpacity(0.2),
                         ),
                         StudentDropDownWidget(controller: controller),
-                        textFeild("GPA", TextEditingController()),
+                        textFeild("GPA", controller.gpaController),
                       ]),
                 ),
                 const Spacer(),

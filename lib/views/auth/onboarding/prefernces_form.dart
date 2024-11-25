@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flourish/controllers/onboarding_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
+import '../../../utils/constants/onboarding_lists.dart';
 import '../../components/common/custom_button.dart';
 import '../../components/onboarding/appbar.dart';
 import '../../components/onboarding/preference_item_builder.dart';
@@ -80,7 +81,9 @@ class PreferncesFormView extends GetView<OnboardingController> {
                   onTap: () {
                     if (controller.selectedIndex.value < 4) {
                       controller.selectedIndex.value++;
-                    } else {}
+                    } else {
+                      controller.makeAPICall();
+                    }
                   },
                 ),
               ],
@@ -96,40 +99,41 @@ class PreferncesFormView extends GetView<OnboardingController> {
       case 0:
         return PreferencesItemBuilder(
           key: const ValueKey(0), // Unique key for AnimatedSwitcher
-          list: controller.preferences1,
+          list: preferences1,
           text: "Where do you eat on campus?",
           supportText: "(Select all that apply)",
         );
       case 1:
         return PreferencesItemBuilder(
           key: const ValueKey(1),
-          list: controller.preferences2,
+          list: preferences2,
           text: "What is your goal?",
           supportText: "",
+          isSingleSelect: true,
         );
       case 2:
         return PreferencesItemBuilder(
           key: const ValueKey(2),
-          list: controller.preferences3,
+          list: preferences3,
           text: "What is your goal of using this app?",
           supportText: "",
         );
       case 3:
         return PreferencesItemBuilder(
           key: const ValueKey(3),
-          list: controller.preferences4,
+          list: preferences4,
           text: "Do you have any allergies?",
           supportText: "",
           isSingleSelect: true,
-          extraItems: controller.allergyItems,
+          extraItems: allergyItems,
         );
       case 4:
         return PreferencesItemBuilder(
           key: const ValueKey(4),
-          list: controller.preferences5,
+          list: preferences5,
           text: "How often do you exercise daily?",
           supportText: "",
-          extraItems: controller.exerciseItems,
+          extraItems: exerciseItems,
           isSingleSelect: true,
         );
       default:

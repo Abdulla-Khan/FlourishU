@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../controllers/onboarding_controller.dart';
 import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/onboarding_lists.dart';
 
 class StudentDropDownWidget extends StatelessWidget {
   const StudentDropDownWidget({
@@ -61,7 +62,7 @@ class StudentDropDownWidget extends StatelessWidget {
           ? null
           : controller.selectedOption.value,
       onChanged: (value) => controller.selectedOption.value = value!,
-      items: controller.studentItems,
+      items: studentItems,
     );
   }
 }
