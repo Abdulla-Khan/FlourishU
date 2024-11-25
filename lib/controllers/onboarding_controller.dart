@@ -1,12 +1,12 @@
 import 'dart:developer';
+import 'package:flourish/model/post/update_profile_model.dart';
 import 'package:flourish/utils/constants/onboarding_lists.dart';
 import 'package:flourish/utils/services/api_service.dart';
 import 'package:flourish/utils/services/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-
-import '../model/post/update_profile_model.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class OnboardingController extends GetxController {
   TextEditingController gpaController = TextEditingController();
@@ -19,83 +19,100 @@ class OnboardingController extends GetxController {
   DateTime? pickedDate;
   final ApiService apiService = ApiService();
 
-  void toggleSelection(
-      String name, List<Map<String, dynamic>> list, String key) {
-    for (var item in list) {
-      item['isSelected'] = item[key] == name;
+  void selectedSchool(String name) {
+    for (var school in schoolsList) {
+      school['isSelected'] = school['name'] == name;
     }
   }
 
-  List<String>? getSelectedValues(List<Map<String, dynamic>> list, String key) {
-    return list
-        .where((item) => item['isSelected'])
-        .map((item) => item[key] as String)
-        .toList();
+  void selectedGender(String selectedGender) {
+    for (var gender in genderList) {
+      gender['isSelected'] = gender['gender'] == selectedGender;
+    }
   }
 
-  String? getFirstSelectedValue(List<Map<String, dynamic>> list, String key) {
-    return list.firstWhere((item) => item['isSelected'], orElse: () => {})[key];
-  }
+  pickDate(
+    context,
+  ) async {
+    pickedDate = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2101));
 
-  void selectedSchool(String name) =>
-      toggleSelection(name, schoolsList, 'name');
-
-  void selectedGender(String selectedGender) =>
-      toggleSelection(selectedGender, genderList, 'gender');
-
-  Future<void> pickDate(BuildContext context) async {
-    final DateTime? date = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
-    );
-    if (date != null) {
-      pickedDate = date;
-      dob.value = DateFormat('dd MMM yyyy').format(date);
+    if (pickedDate != null) {
+      dob.value = DateFormat('dd MMM yyyy').format(pickedDate!);
     }
   }
 
   Future<void> makeAPICall() async {
-    String? token = LocalStorageService.getData<String>('auth_token');
-    if (token == null) {
-      log('Auth token is null');
-      return;
-    }
-
+    String token = LocalStorageService.getData<String>('auth_token')!;
+    String userId = JwtDecoder.decode(token)['_id'];
+    log(userId);
+    log(token);
     try {
+      String? allergy = preferences4.firstWhere(
+        (element) => element['isSelected'],
+      )['value'];
+
+      String? exercise = preferences5.firstWhere(
+        (element) => element['isSelected'],
+      )['value'];
+
       final profileUpdateRequest = ProfileUpdateRequest(
-        gender: getFirstSelectedValue(genderList, 'gender'),
+        gender: genderList.firstWhere(
+          (element) => element['isSelected'],
+        )['gender'],
         weight: currentWeight.toInt(),
         height: currentHeightInInches.toInt(),
-        eatOptions: getSelectedValues(preferences1, 'value'),
-        goal: getFirstSelectedValue(preferences2, 'value'),
-        appGoal: getSelectedValues(preferences3, 'value'),
-        allergy: getFirstSelectedValue(preferences4, 'value') == "Yes",
-        allergyTypes: getSelectedValues(allergyItems, 'value'),
+        eatOptions: preferences1
+            .where((element) =>
+                element['isSelected']) // Filters only selected items
+            .map((element) =>
+                element['value'] as String) // Extracts the 'gender' value
+            .toList(),
+        goal: preferences2.firstWhere(
+          (element) => element['isSelected'],
+        )['value'],
+        appGoal: preferences3
+            .where((element) =>
+                element['isSelected']) // Filters only selected items
+            .map((element) =>
+                element['value'] as String) // Extracts the 'gender' value
+            .toList(),
+        allergy: allergy == "Yes",
+        allergyTypes: allergy == "No"
+            ? null
+            : allergyItems
+                .where((element) =>
+                    element['isSelected']) // Filters only selected items
+                .map((element) => element['value'] as String)
+                .toList(),
         student: Student(
-          school: getFirstSelectedValue(schoolsList, 'name'),
+          school: schoolsList.firstWhere(
+            (element) => element['isSelected'],
+          )['name'],
           gpa: gpaController.text,
           status: selectedOption.value,
         ),
-        exercise: getFirstSelectedValue(preferences5, 'value'),
-        exerciseTypes: getSelectedValues(exerciseItems, 'value'),
+        exercise: exercise,
+        exerciseTypes: exercise == "Never (0 times a week)"
+            ? null
+            : exerciseItems
+                .where((element) =>
+                    element['isSelected']) // Filters only selected items
+                .map((element) => element['value'] as String)
+                .toList(),
         dob: pickedDate?.toIso8601String(),
       );
 
-      final response = await apiService.postRequest(
+      final response = await apiService.multipartPutRequest(
         authToken: token,
-        'user/profile-update',
-        profileUpdateRequest.toJson(),
+        endpoint: 'user/profile-update?id=$userId',
+        body: profileUpdateRequest.toJson(),
+        files: {},
       );
-
-      if (response.statusCode == 200) {
-        log('Profile update successful');
-      } else {
-        log('Profile update failed: ${response.statusCode}');
-      }
-    } catch (e) {
-      log('Error making API call: $e');
-    }
+      log(response.reasonPhrase.toString());
+    } catch (e) {}
   }
 }
