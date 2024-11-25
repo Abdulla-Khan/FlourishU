@@ -1,9 +1,7 @@
-import 'dart:developer';
 
-import 'package:flourish/controllers/sign_up_controller.dart';
+import 'package:flourish/controllers/auth/sign_up_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
-import 'package:flourish/utils/services/toast_service.dart';
 import 'package:flourish/views/components/common/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

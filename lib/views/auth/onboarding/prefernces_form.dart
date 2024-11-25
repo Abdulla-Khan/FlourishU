@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flourish/controllers/onboarding_controller.dart';
+import 'package:flourish/controllers/auth/onboarding_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
 import '../../../utils/constants/onboarding_lists.dart';
 import '../../components/common/custom_button.dart';

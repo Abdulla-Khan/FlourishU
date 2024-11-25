@@ -1,4 +1,4 @@
-import 'package:flourish/controllers/reset_password_controller.dart';
+import 'package:flourish/controllers/auth/reset_password_controller.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
 import '../../components/common/custom_button.dart';
 import 'package:flourish/views/components/common/textfield.dart';

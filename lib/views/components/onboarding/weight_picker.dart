@@ -1,4 +1,4 @@
-import 'package:flourish/controllers/onboarding_controller.dart';
+import 'package:flourish/controllers/auth/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wheel_slider/wheel_slider.dart';

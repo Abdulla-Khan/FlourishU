@@ -1,4 +1,4 @@
-import 'package:flourish/controllers/onboarding_controller.dart';
+import 'package:flourish/controllers/auth/onboarding_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/constants/onboarding_lists.dart';
 import 'package:flourish/views/components/onboarding/gender_card.dart';

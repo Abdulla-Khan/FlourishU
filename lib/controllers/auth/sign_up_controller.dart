@@ -5,7 +5,7 @@ import 'package:flourish/utils/services/form_validation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../utils/services/toast_service.dart';
+import '../../utils/services/toast_service.dart';
 
 class SignUpController extends GetxController {
   RxBool checkBoxValue = false.obs;

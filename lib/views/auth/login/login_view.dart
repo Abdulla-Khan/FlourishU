@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
@@ -8,7 +7,7 @@ import 'package:flourish/views/components/common/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:flourish/controllers/login_controller.dart';
+import 'package:flourish/controllers/auth/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
   const LoginView({super.key});

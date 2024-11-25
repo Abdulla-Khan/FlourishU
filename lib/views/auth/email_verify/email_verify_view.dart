@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 
-import '../../../controllers/email_verify_controller.dart';
+import '../../../controllers/auth/email_verify_controller.dart';
 
 class EmailVerifyView extends GetView<EmailVerifyController> {
   const EmailVerifyView({super.key});

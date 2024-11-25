@@ -1,9 +1,9 @@
-import 'package:flourish/controllers/email_verify_controller.dart';
-import 'package:flourish/controllers/forgot_password_controller.dart';
-import 'package:flourish/controllers/onboarding_controller.dart';
-import 'package:flourish/controllers/reset_password_controller.dart';
-import 'package:flourish/controllers/sign_up_controller.dart';
-import 'package:flourish/controllers/login_controller.dart';
+import 'package:flourish/controllers/auth/email_verify_controller.dart';
+import 'package:flourish/controllers/auth/forgot_password_controller.dart';
+import 'package:flourish/controllers/auth/onboarding_controller.dart';
+import 'package:flourish/controllers/auth/reset_password_controller.dart';
+import 'package:flourish/controllers/auth/sign_up_controller.dart';
+import 'package:flourish/controllers/auth/login_controller.dart';
 import 'package:get/get.dart';
 
 class ControllerBinding implements Bindings {

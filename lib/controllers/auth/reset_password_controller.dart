@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../utils/services/api_service.dart';
+import '../../utils/services/api_service.dart';
 
 class ResetPasswordController extends GetxController {
   RxString otp = "".obs;

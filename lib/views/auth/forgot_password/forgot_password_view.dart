@@ -1,6 +1,5 @@
-import 'dart:developer';
 
-import 'package:flourish/controllers/forgot_password_controller.dart';
+import 'package:flourish/controllers/auth/forgot_password_controller.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
 
 import '../../components/common/custom_button.dart';
