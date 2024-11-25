@@ -73,7 +73,7 @@ class ForgotPasswordConfirmation extends StatelessWidget {
                         alignment: WrapAlignment.center,
                         children: [
                           Text(
-                            '${Get.arguments.text}',
+                            '${Get.arguments == null ? "" : Get.arguments.text}',
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Color(0xFF91A93E),
