@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flourish/controllers/sign_up_controller.dart';
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
+import 'package:flourish/utils/services/toast_service.dart';
 import 'package:flourish/views/components/common/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,17 +56,18 @@ class SignUpView extends GetView<SignUpController> {
                       onChanged: (value) =>
                           validatePhoneNumber(value, controller.phoneError),
                       errorMessage: controller.phoneError.value,
+                      isKeyboard: true,
                     ),
                     textFeild(
-                      "University Email Address",
-                      controller.emailController,
-                      validator: (value) => controller.emailError.value.isEmpty
-                          ? null
-                          : controller.emailError.value,
-                      onChanged: (value) =>
-                          validateEmail(value, controller.emailError),
-                      errorMessage: controller.emailError.value,
-                    ),
+                        "University Email Address", controller.emailController,
+                        validator: (value) =>
+                            controller.emailError.value.isEmpty
+                                ? null
+                                : controller.emailError.value,
+                        onChanged: (value) =>
+                            validateEmail(value, controller.emailError),
+                        errorMessage: controller.emailError.value,
+                        isEmail: true),
                     PasswordFeild(
                       name: "Password",
                       controller: controller.passwordController,
@@ -124,7 +128,9 @@ class SignUpView extends GetView<SignUpController> {
                         : CustomButton(
                             text: "Sign up",
                             onTap: () {
-                              controller.getCode();
+                              controller.validateForm()
+                                  ? controller.getCode()
+                                  : null;
                             },
                           ),
                     const Spacer(

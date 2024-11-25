@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flourish/utils/services/api_service.dart';
 import 'package:flourish/utils/services/local_storage.dart';
+import 'package:flourish/utils/services/toast_service.dart';
 import 'package:get/get.dart';
 
 class EmailVerifyController extends GetxController {
@@ -30,6 +31,10 @@ class EmailVerifyController extends GetxController {
           'auth/verify-account', {"email": email, "code": otp.value});
       if (response.statusCode == 200) {
         signUpUser();
+      } else {
+        isLoading.value = false;
+        Get.back();
+        FlutterToastService().showError("Unable to Verify OTP");
       }
     } catch (e) {
       isLoading.value = false;
@@ -51,6 +56,10 @@ class EmailVerifyController extends GetxController {
         final String token = responseData['data']['accessToken'].toString();
         await LocalStorageService.saveData('auth_token', token);
         Get.toNamed("/personalInfo");
+      } else {
+        Get.back();
+        isLoading.value = false;
+        FlutterToastService().showError("Unable to Verify OTP");
       }
     } catch (e) {
       isLoading.value = false;

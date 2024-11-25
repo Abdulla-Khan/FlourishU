@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
+import 'package:flourish/utils/services/toast_service.dart';
 import 'package:flourish/views/components/common/custom_button.dart';
 import 'package:flourish/views/components/common/textfield.dart';
 import 'package:flutter/material.dart';
@@ -166,7 +167,8 @@ class LoginView extends GetView<LoginController> {
                                     onTap: () {
                                       controller.validateForm()
                                           ? controller.login()
-                                          : log("Show Error");
+                                          : FlutterToastService()
+                                              .showError("Fill all feilds");
                                     },
                                   ),
                           ),

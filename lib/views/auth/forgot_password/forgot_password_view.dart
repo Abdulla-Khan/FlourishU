@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flourish/controllers/forgot_password_controller.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
 
@@ -70,20 +72,29 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      textFeild(
-                        "University Email Address",
-                        controller.emailController,
-                        validator: (value) =>
-                            controller.emailError.value.isEmpty
-                                ? null
-                                : controller.emailError.value,
-                        onChanged: (value) =>
-                            validateEmail(value, controller.emailError),
-                        errorMessage: controller.emailError.value,
+                      Obx(
+                        () => textFeild("University Email Address",
+                            controller.emailController,
+                            validator: (value) =>
+                                controller.emailError.value.isEmpty
+                                    ? null
+                                    : controller.emailError.value,
+                            onChanged: (value) =>
+                                validateEmail(value, controller.emailError),
+                            errorMessage: controller.emailError.value,
+                            isEmail: true),
                       ),
-                      CustomButton(
-                          text: "Submit",
-                          onTap: () => controller.forgotPassword()),
+                      Obx(
+                        () => controller.isLoading.value
+                            ? const Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : CustomButton(
+                                text: "Submit",
+                                onTap: () => controller.emailError.value.isEmpty
+                                    ? controller.forgotPassword()
+                                    : null),
+                      ),
                       Center(
                         child: TextButton(
                           onPressed: () {},
