@@ -83,7 +83,7 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                       ),
                       CustomButton(
                           text: "Submit",
-                          onTap: () => Get.toNamed('/forgotPasswordConfirm')),
+                          onTap: () => controller.forgotPassword()),
                       Center(
                         child: TextButton(
                           onPressed: () {},

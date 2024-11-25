@@ -69,21 +69,21 @@ class ForgotPasswordConfirmation extends StatelessWidget {
                     ),
                     SizedBox(
                       width: context.width * 0.8,
-                      child: const Wrap(
-                        alignment: WrapAlignment.spaceAround,
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
                         children: [
                           Text(
-                            'xyz@helloworld.com',
+                            '${Get.arguments.text}',
                             textAlign: TextAlign.center,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Color(0xFF91A93E),
                               fontSize: 14,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Text(
-                            'Please check your email.',
+                          const Text(
+                            ' Please check your email.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black,
