@@ -1,4 +1,3 @@
-
 import 'package:flourish/utils/constants/colors.dart';
 import 'package:flourish/utils/services/form_validation_service.dart';
 import 'package:flourish/utils/services/toast_service.dart';
@@ -164,10 +163,11 @@ class LoginView extends GetView<LoginController> {
                                 : CustomButton(
                                     text: "Login",
                                     onTap: () {
-                                      controller.validateForm()
-                                          ? controller.login()
-                                          : FlutterToastService()
-                                              .showError("Fill all feilds");
+                                      Get.toNamed('/home');
+                                      // controller.validateForm()
+                                      //     ? controller.login()
+                                      //     : FlutterToastService()
+                                      //         .showError("Fill all feilds");
                                     },
                                   ),
                           ),

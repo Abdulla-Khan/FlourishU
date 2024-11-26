@@ -5,6 +5,7 @@ import 'package:flourish/controllers/auth/reset_password_controller.dart';
 import 'package:flourish/controllers/auth/sign_up_controller.dart';
 import 'package:flourish/controllers/auth/login_controller.dart';
 import 'package:flourish/controllers/customize_diet_plans/customize_diet_plans_controller.dart';
+import 'package:flourish/controllers/history/history_controller.dart';
 import 'package:flourish/controllers/home/home_controller.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +19,7 @@ class ControllerBinding implements Bindings {
     Get.lazyPut(() => ForgotPasswordController(), fenix: true);
     Get.lazyPut(() => ResetPasswordController(), fenix: true);
     Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => HistoryController());
     Get.lazyPut(() => CustomizeDietPlansController(), fenix: true);
   }
 }

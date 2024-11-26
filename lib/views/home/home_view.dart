@@ -14,6 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         toolbarHeight: context.height * 0.02,

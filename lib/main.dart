@@ -1,10 +1,12 @@
 import 'package:flourish/utils/bindings/bindings.dart';
 import 'package:flourish/utils/constants/colors.dart';
-import 'package:flourish/utils/routes/routes.dart';
+import 'package:flourish/views/navigation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'utils/routes/routes.dart';
 
 void main() async {
   await GetStorage.init();
@@ -18,6 +20,7 @@ class FlourishApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: GetMaterialApp(
+        home: NavigationView(),
         getPages: routes,
         initialBinding: ControllerBinding(),
         title: 'Flourish',
