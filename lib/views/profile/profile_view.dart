@@ -170,11 +170,16 @@ const List accountSettingsList = [
   {
     "title": "Change Password",
     "subtitle": "Change your Profile Password",
+    "route": "/changePassword"
   }
 ];
 
 const List dietryPreferences = [
-  {"title": "My Preferences", "subtitle": "Update your Preferences"},
+  {
+    "title": "My Preferences",
+    "subtitle": "Update your Preferences",
+    "route": "/preferences"
+  },
   {
     "title": "Favourite Food / Resturants",
     "subtitle": "Check What you’ve selected"
