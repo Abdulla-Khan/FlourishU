@@ -11,6 +11,7 @@ import 'package:flourish/views/customize_diet_plans/customize_diet_plans_view.da
 import 'package:flourish/views/customize_diet_plans/food_diary_view.dart';
 import 'package:flourish/views/customize_diet_plans/meal_plan_view.dart';
 import 'package:flourish/views/home/home_view.dart';
+import 'package:flourish/views/profile/edit_profile_view.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -89,6 +90,12 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: '/mealPlan',
     page: () => const MealPlanView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/editProfile',
+    page: () => const EditProfileView(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),

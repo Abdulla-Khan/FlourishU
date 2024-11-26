@@ -125,32 +125,35 @@ class ProfileListViewBuilder extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return ListTile(
-              titleAlignment: ListTileTitleAlignment.threeLine,
-              leading: const Icon(
-                Icons.account_box_outlined,
-              ),
-              title: Text(
-                list[index]["title"],
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w500,
+            return GestureDetector(
+              onTap: () => Get.toNamed(list[index]['route']),
+              child: ListTile(
+                titleAlignment: ListTileTitleAlignment.threeLine,
+                leading: const Icon(
+                  Icons.account_box_outlined,
                 ),
-              ),
-              subtitle: Text(
-                list[index]["subtitle"],
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w300,
+                title: Text(
+                  list[index]["title"],
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 18,
+                subtitle: Text(
+                  list[index]["subtitle"],
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 12,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 18,
+                ),
               ),
             );
           }),
@@ -161,9 +164,13 @@ class ProfileListViewBuilder extends StatelessWidget {
 const List accountSettingsList = [
   {
     "title": "Personal Details",
-    "subtitle": "Update your height, weight, age, gpa and more"
+    "subtitle": "Update your height, weight, age, gpa and more",
+    "route": "/editProfile"
   },
-  {"title": "Change Password", "subtitle": "Change your Profile Password"}
+  {
+    "title": "Change Password",
+    "subtitle": "Change your Profile Password",
+  }
 ];
 
 const List dietryPreferences = [
