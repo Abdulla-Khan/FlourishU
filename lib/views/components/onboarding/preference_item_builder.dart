@@ -24,6 +24,7 @@ class PreferencesItemBuilder extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text.rich(
+          textAlign: TextAlign.center,
           TextSpan(
             children: [
               TextSpan(

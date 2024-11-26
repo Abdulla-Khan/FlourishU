@@ -1,7 +1,6 @@
+import 'package:flourish/utils/bottom_sheet/other_diets_bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import '../../../controllers/home/home_controller.dart';
 
 class OtherDietPlansList extends StatelessWidget {
@@ -23,21 +22,24 @@ class OtherDietPlansList extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               Get.bottomSheet(
-                BottomSheet(
-                  shape: const RoundedRectangleBorder(
-                    side: BorderSide(color: Colors.white),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
+                  BottomSheet(
+                    shape: const RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                      ),
                     ),
+                    onClosing: () {},
+                    builder: (ctx) {
+                      return DietPlanBottomSheet(
+                        name: controller.otherDietPlans[index]['title']!,
+                        image: controller.otherDietPlans[index]['image']!,
+                        desc: controller.otherDietPlans[index]['description']!,
+                      );
+                    },
                   ),
-                  onClosing: () {},
-                  builder: (ctx) {
-                    return DietPlanBottomSheet(
-                        controller: controller, index: index);
-                  },
-                ),
-              );
+                  isDismissible: false);
             },
             child: Container(
               margin: EdgeInsets.symmetric(vertical: context.height * 0.01),
@@ -77,69 +79,5 @@ class OtherDietPlansList extends StatelessWidget {
             ),
           );
         });
-  }
-}
-
-class DietPlanBottomSheet extends StatelessWidget {
-  const DietPlanBottomSheet({
-    super.key,
-    required this.controller,
-    required this.index,
-  });
-
-  final HomeController controller;
-  final int index;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.width * 0.04,
-      ),
-      width: context.width,
-      decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(20),
-        topRight: Radius.circular(20),
-      )),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "\n${controller.otherDietPlans[index]['title']}\n",
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              IconButton(
-                  onPressed: () => Get.back(), icon: const Icon(Icons.close))
-            ],
-          ),
-          Center(
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                controller.otherDietPlans[index]['image']!,
-                width: context.width * 0.8,
-              ),
-            ),
-          ),
-          Text(
-            "\n${controller.otherDietPlans[index]['description']!}",
-            style: const TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w400),
-          ),
-        ],
-      ),
-    );
   }
 }

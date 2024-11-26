@@ -7,6 +7,10 @@ import 'package:flourish/views/auth/onboarding/prefernces_form.dart';
 import 'package:flourish/views/auth/onboarding/school_detail_form.dart';
 import 'package:flourish/views/auth/reset_password/reset_password_view.dart';
 import 'package:flourish/views/auth/sign_up/sign_up_view.dart';
+import 'package:flourish/views/customize_diet_plans/customize_diet_plans_view.dart';
+import 'package:flourish/views/customize_diet_plans/food_diary_view.dart';
+import 'package:flourish/views/customize_diet_plans/meal_plan_view.dart';
+import 'package:flourish/views/home/home_view.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -61,6 +65,30 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: '/resetPassword',
     page: () => const ResetPasswordView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/home',
+    page: () => const HomeView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/customDiet',
+    page: () => const CustomizeDietPlansView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/foodDiary',
+    page: () => const FoodDiaryView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/mealPlan',
+    page: () => const MealPlanView(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),

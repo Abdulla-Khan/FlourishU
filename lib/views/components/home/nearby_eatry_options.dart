@@ -15,7 +15,7 @@ class NearbyEatryOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: context.height * 0.04,
+      height: context.height * 0.035,
       child: ListView.separated(
         itemCount: controller.nearbyEatriesList.length,
         shrinkWrap: true,

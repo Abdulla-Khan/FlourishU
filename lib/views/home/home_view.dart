@@ -15,6 +15,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         toolbarHeight: context.height * 0.02,
         backgroundColor: bgColor,
         surfaceTintColor: bgColor,
@@ -28,9 +29,6 @@ class HomeView extends GetView<HomeController> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // DietPlanBottomSheet(
-              //   controller: controller,
-              // )
               const SearchHeader(),
               SizedBox(height: context.height * 0.03),
               const Text(
@@ -53,7 +51,7 @@ class HomeView extends GetView<HomeController> {
               SizedBox(height: context.height * 0.03),
               CustomButton(
                 text: 'Customize Your Plan  \u{2192}',
-                onTap: () {},
+                onTap: () => Get.toNamed('/customDiet'),
               ),
               Divider(
                 thickness: 1,
