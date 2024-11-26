@@ -22,9 +22,9 @@ class SettingsView extends GetView {
           ),
           child: ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: settingItem.length + 1,
+              itemCount: settingItem.length,
               separatorBuilder: (context, index) {
-                if (index == 4) {
+                if (index == 3) {
                   return Divider(
                     thickness: 1,
                     height: context.height * 0.05,
@@ -42,10 +42,9 @@ class SettingsView extends GetView {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      leading: Icon(
-                          settingItem[index == 0 ? index : index - 1]['icon']),
+                      leading: Icon(settingItem[index]['icon']),
                       title: Text(
-                        settingItem[index == 0 ? index : index - 1]['title'],
+                        settingItem[index]['title'],
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 14,

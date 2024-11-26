@@ -74,9 +74,6 @@ class FoodDiaryView extends GetView<CustomizeDietPlansController> {
                                 ),
                                 onPressed: () {
                                   i['isSelected'] = !i['isSelected'];
-                                  // for (var j in foodOption) {
-                                  //   j['isSelected'] = j['value'] == i['value'];
-                                  // }
                                 },
                                 icon: const Icon(
                                   Icons.keyboard_arrow_down_sharp,

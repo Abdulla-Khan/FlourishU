@@ -38,61 +38,84 @@ class HistoryView extends GetView<HistoryController> {
                   separatorBuilder: (context, index) =>
                       SizedBox(height: context.height * 0.02),
                   itemBuilder: (context, index) {
-                    return Material(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 3,
-                      child: ListTile(
-                        tileColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        title: Text(
-                          weekDays[index]['value'],
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                        subtitle: Obx(
-                          () => Text(
-                            controller.formattedDate.value,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                        trailing: SizedBox(
-                          width: context.width * 0.2,
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                'View More',
-                                textAlign: TextAlign.right,
-                                style: TextStyle(
-                                  color: textBtnColor,
-                                  fontSize: 14,
-                                  fontFamily: 'Roboto',
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                size: 14,
-                                color: textBtnColor,
-                              ),
-                            ],
-                          ),
-                        ),
+                    return Obx(
+                      () => ItemCards(
+                        title: weekDays[index]['value'],
+                        date: controller.formattedDate.value,
+                        rowText: 'View More',
+                        width: context.width * 0.2,
                       ),
                     );
                   })
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ItemCards extends StatelessWidget {
+  const ItemCards({
+    super.key,
+    required this.title,
+    required this.date,
+    required this.rowText,
+    required this.width,
+  });
+  final String title;
+  final String date;
+  final String rowText;
+  final double width;
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(8),
+      elevation: 3,
+      child: ListTile(
+        tileColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        subtitle: Text(
+          date,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 12,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        trailing: SizedBox(
+          width: width,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Text(
+                rowText,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  color: textBtnColor,
+                  fontSize: 14,
+                  fontFamily: 'Roboto',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 14,
+                color: textBtnColor,
+              ),
             ],
           ),
         ),

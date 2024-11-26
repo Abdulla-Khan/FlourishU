@@ -10,6 +10,7 @@ import 'package:flourish/views/auth/sign_up/sign_up_view.dart';
 import 'package:flourish/views/customize_diet_plans/customize_diet_plans_view.dart';
 import 'package:flourish/views/customize_diet_plans/food_diary_view.dart';
 import 'package:flourish/views/customize_diet_plans/meal_plan_view.dart';
+import 'package:flourish/views/favourites/favourites_view.dart';
 import 'package:flourish/views/home/home_view.dart';
 import 'package:flourish/views/profile/change_password_view.dart';
 import 'package:flourish/views/profile/edit_profile_view.dart';
@@ -103,6 +104,12 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: '/changePassword',
     page: () => const ChangePasswordView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/favourites',
+    page: () => const FavouritesView(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),

@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 
 import 'package:flourish/utils/constants/colors.dart';
@@ -182,6 +181,7 @@ const List dietryPreferences = [
   },
   {
     "title": "Favourite Food / Resturants",
-    "subtitle": "Check What you’ve selected"
+    "subtitle": "Check What you’ve selected",
+    "route": "/favourites"
   }
 ];
