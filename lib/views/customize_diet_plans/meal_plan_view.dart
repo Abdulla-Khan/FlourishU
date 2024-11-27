@@ -1,5 +1,6 @@
 import 'package:flourish/views/components/common/custom_button.dart';
 import 'package:flourish/views/customize_diet_plans/food_diary_view.dart';
+import 'package:flourish/views/navigation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../utils/constants/colors.dart';
@@ -78,7 +79,9 @@ class MealPlanView extends GetView {
         padding: EdgeInsets.symmetric(
           horizontal: context.width * 0.04,
         ),
-        child: CustomButton(text: "Confirm", onTap: () {}),
+        child: CustomButton(
+            text: "Confirm",
+            onTap: () => Get.offAll(() => const NavigationView())),
       ),
     );
   }

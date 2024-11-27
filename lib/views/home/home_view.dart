@@ -50,6 +50,14 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               SizedBox(height: context.height * 0.03),
+              GestureDetector(
+                onTap: () => Get.toNamed("/dietDetails"),
+                child: const ItemsCard(
+                  image: "assets/healthy-diet.png",
+                  text: "Healthy Diet",
+                ),
+              ),
+              SizedBox(height: context.height * 0.01),
               CustomButton(
                 text: 'Customize Your Plan',
                 showIcon: true,
@@ -89,6 +97,56 @@ class HomeView extends GetView<HomeController> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ItemsCard extends StatelessWidget {
+  const ItemsCard({
+    super.key,
+    required this.image,
+    required this.text,
+  });
+  final String image;
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: context.height * 0.01),
+      padding: EdgeInsets.symmetric(horizontal: context.width * 0.04),
+      height: context.height * 0.08,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.25),
+            blurRadius: 20,
+          )
+        ],
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover,
+              width: context.width * 0.15,
+            ),
+          ),
+          SizedBox(width: context.width * 0.03),
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontFamily: 'Roboto',
+              fontWeight: FontWeight.w500,
+            ),
+          )
+        ],
       ),
     );
   }

@@ -63,7 +63,8 @@ class LoginController extends GetxController {
       });
 
       if (response.statusCode == 200) {
-        log('Home');
+        Get.toNamed('/home');
+
         isLoading.value = false;
       } else if (response.statusCode == 400) {
         log("Incorrect Email/Password");

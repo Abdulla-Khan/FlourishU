@@ -15,7 +15,6 @@ class ResetPasswordController extends GetxController {
   final ApiService apiService = ApiService();
 
   Future<void> forgotPasswordVerify() async {
-    log('c');
     try {
       isLoading.value = true;
       final response = await apiService.postRequest(

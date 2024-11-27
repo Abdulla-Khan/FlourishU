@@ -113,7 +113,9 @@ class OnboardingController extends GetxController {
         body: profileUpdateRequest.toJson(),
         files: {},
       );
-      log(response.reasonPhrase.toString());
+      if (response.statusCode == 200) {
+        Get.toNamed('/home');
+      }
     } catch (e) {}
   }
 }
