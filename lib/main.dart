@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'utils/routes/routes.dart';
+import 'views/diet_details/diet_details_view.dart';
 
 void main() async {
   await GetStorage.init();
@@ -20,8 +21,8 @@ class FlourishApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: GetMaterialApp(
-        home: const NavigationView(),
-        getPages: routes,
+        // getPages: routes,
+        home: const DietDetailsView(),
         initialBinding: ControllerBinding(),
         title: 'Flourish',
         debugShowCheckedModeBanner: false,

@@ -18,8 +18,8 @@ class ControllerBinding implements Bindings {
     Get.lazyPut(() => OnboardingController(), fenix: true);
     Get.lazyPut(() => ForgotPasswordController(), fenix: true);
     Get.lazyPut(() => ResetPasswordController(), fenix: true);
-    Get.lazyPut(() => HomeController());
-    Get.lazyPut(() => HistoryController());
+    Get.lazyPut(() => HomeController(), fenix: true);
+    Get.lazyPut(() => HistoryController(), fenix: true);
     Get.lazyPut(() => CustomizeDietPlansController(), fenix: true);
   }
 }

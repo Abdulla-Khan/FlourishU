@@ -15,45 +15,44 @@ class ResetPasswordController extends GetxController {
   final ApiService apiService = ApiService();
 
   Future<void> forgotPasswordVerify() async {
-    log('c');
-    try {
-      isLoading.value = true;
-      final response = await apiService.postRequest(
-          'auth/verify', {'email': Get.arguments, 'code': otp.value});
-      log(response.toString());
-      if (response.statusCode == 200) {
-        otp.value = "";
-        isLoading.value = false;
-        isOtpVerified.value = true;
-      } else if (response.statusCode == 400) {
-        isLoading.value = false;
-        log('Provide a valid email');
-      }
-    } catch (e) {
-      log(e.toString());
-      isLoading.value = false;
-    }
+    // try {
+    //   isLoading.value = true;
+    //   final response = await apiService.postRequest(
+    //       'auth/verify', {'email': Get.arguments, 'code': otp.value});
+    //   log(response.toString());
+    //   if (response.statusCode == 200) {
+    //     otp.value = "";
+    //     isLoading.value = false;
+    //     isOtpVerified.value = true;
+    //   } else if (response.statusCode == 400) {
+    //     isLoading.value = false;
+    //     log('Provide a valid email');
+    //   }
+    // } catch (e) {
+    //   log(e.toString());
+    //   isLoading.value = false;
+    // }
   }
 
   Future<void> updateForgotPassword() async {
-    try {
-      isLoading.value = true;
-      final response = await apiService.postRequest(
-          'auth/forgot-password-update',
-          {'email': Get.arguments, 'newPassword': passwordController.text});
-      log(response.toString());
-      log(Get.arguments);
-      if (response.statusCode == 200) {
-        otp.value = "";
-        isLoading.value = false;
-        isOtpVerified.value = true;
-      } else if (response.statusCode == 400) {
-        isLoading.value = false;
-        log('Provide a valid email');
-      }
-    } catch (e) {
-      log(e.toString());
-      isLoading.value = false;
-    }
+    // try {
+    //   isLoading.value = true;
+    //   final response = await apiService.postRequest(
+    //       'auth/forgot-password-update',
+    //       {'email': Get.arguments, 'newPassword': passwordController.text});
+    //   log(response.toString());
+    //   log(Get.arguments);
+    //   if (response.statusCode == 200) {
+    //     otp.value = "";
+    //     isLoading.value = false;
+    //     isOtpVerified.value = true;
+    //   } else if (response.statusCode == 400) {
+    //     isLoading.value = false;
+    //     log('Provide a valid email');
+    //   }
+    // } catch (e) {
+    //   log(e.toString());
+    //   isLoading.value = false;
+    // }
   }
 }
