@@ -25,45 +25,45 @@ class EmailVerifyController extends GetxController {
   }
 
   Future<void> verifyEmail() async {
-    // isLoading.value = true;
-    // try {
-    //   final response = await apiService.postRequest(
-    //       'auth/verify-account', {"email": email, "code": otp.value});
-    //   if (response.statusCode == 200) {
-    signUpUser();
-    //   } else {
-    //     isLoading.value = false;
-    //     Get.back();
-    //     FlutterToastService().showError("Unable to Verify OTP");
-    //   }
-    // } catch (e) {
-    //   isLoading.value = false;
-    //   log(e.toString());
-    // }
+    isLoading.value = true;
+    try {
+      final response = await apiService.postRequest(
+          'auth/verify-account', {"email": email, "code": otp.value});
+      if (response.statusCode == 200) {
+        signUpUser();
+      } else {
+        isLoading.value = false;
+        Get.back();
+        FlutterToastService().showError("Unable to Verify OTP");
+      }
+    } catch (e) {
+      isLoading.value = false;
+      log(e.toString());
+    }
   }
 
   Future<void> signUpUser() async {
-    // try {
-    //   final response = await apiService.postRequest('auth/sign-up', {
-    //     "email": email,
-    //     "name": name,
-    //     "password": password,
-    //     "phone": phone,
-    //   });
-    //   if (response.statusCode == 200) {
-    //     final Map<String, dynamic> responseData = json.decode(response.body);
-    //     isLoading.value = false;
-    //     final String token = responseData['data']['accessToken'].toString();
-    //     await LocalStorageService.saveData('auth_token', token);
-    Get.toNamed("/personalInfo");
-    //   } else {
-    //     Get.back();
-    //     isLoading.value = false;
-    //     FlutterToastService().showError("Unable to Verify OTP");
-    //   }
-    // } catch (e) {
-    //   isLoading.value = false;
-    //   log(e.toString());
-    // }
+    try {
+      final response = await apiService.postRequest('auth/sign-up', {
+        "email": email,
+        "name": name,
+        "password": password,
+        "phone": phone,
+      });
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = json.decode(response.body);
+        isLoading.value = false;
+        final String token = responseData['data']['accessToken'].toString();
+        await LocalStorageService.saveData('auth_token', token);
+        Get.toNamed("/personalInfo");
+      } else {
+        Get.back();
+        isLoading.value = false;
+        FlutterToastService().showError("Unable to Verify OTP");
+      }
+    } catch (e) {
+      isLoading.value = false;
+      log(e.toString());
+    }
   }
 }

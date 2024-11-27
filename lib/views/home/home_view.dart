@@ -50,9 +50,12 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               SizedBox(height: context.height * 0.03),
-              const ItemsCard(
-                image: "assets/healthy-diet.png",
-                text: "   Healthy Diet",
+              GestureDetector(
+                onTap: () => Get.toNamed("/dietDetails"),
+                child: const ItemsCard(
+                  image: "assets/healthy-diet.png",
+                  text: "Healthy Diet",
+                ),
               ),
               SizedBox(height: context.height * 0.01),
               CustomButton(
@@ -133,9 +136,10 @@ class ItemsCard extends StatelessWidget {
               width: context.width * 0.15,
             ),
           ),
+          SizedBox(width: context.width * 0.03),
           Text(
             text,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontFamily: 'Roboto',

@@ -1,15 +1,10 @@
 import 'package:flourish/utils/bindings/bindings.dart';
 import 'package:flourish/utils/constants/colors.dart';
-import 'package:flourish/views/diet_details/item_details_view.dart';
-import 'package:flourish/views/diet_details/mealtype_details_view.dart';
-import 'package:flourish/views/navigation_view.dart';
+import 'package:flourish/utils/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'utils/routes/routes.dart';
-import 'views/diet_details/diet_details_view.dart';
 
 void main() async {
   await GetStorage.init();
@@ -23,8 +18,7 @@ class FlourishApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: GetMaterialApp(
-        // getPages: routes,
-        home: const ItemDetailsView(),
+        getPages: routes,
         initialBinding: ControllerBinding(),
         title: 'Flourish',
         debugShowCheckedModeBanner: false,

@@ -45,29 +45,29 @@ class SignUpController extends GetxController {
   }
 
   Future<void> getCode() async {
-    // isLoading.value = true;
-    // try {
-    //   final respose = await apiService.postRequest('auth/get-code', {
-    //     "email": emailController.text,
-    //   });
-    //   log(respose.body.toString());
-    //   if (respose.statusCode == 200) {
-    Get.toNamed("/verifyEmail", arguments: [
-      emailController.text,
-      passwordController.text,
-      nameController.text,
-      phoneController.text,
-    ]);
-    //     isLoading.value = false;
-    //   } else {
-    //     isLoading.value = false;
-    //     FlutterToastService()
-    //         .showError("Unable to to Sign Up. Try Again Later");
-    //   }
-    // } catch (e) {
-    //   isLoading.value = false;
-    //   log(e.toString());
-    // }
+    isLoading.value = true;
+    try {
+      final respose = await apiService.postRequest('auth/get-code', {
+        "email": emailController.text,
+      });
+      log(respose.body.toString());
+      if (respose.statusCode == 200) {
+        Get.toNamed("/verifyEmail", arguments: [
+          emailController.text,
+          passwordController.text,
+          nameController.text,
+          phoneController.text,
+        ]);
+        isLoading.value = false;
+      } else {
+        isLoading.value = false;
+        FlutterToastService()
+            .showError("Unable to to Sign Up. Try Again Later");
+      }
+    } catch (e) {
+      isLoading.value = false;
+      log(e.toString());
+    }
   }
   // /verify-account
 }

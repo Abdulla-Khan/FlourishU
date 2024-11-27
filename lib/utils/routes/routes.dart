@@ -10,8 +10,11 @@ import 'package:flourish/views/auth/sign_up/sign_up_view.dart';
 import 'package:flourish/views/customize_diet_plans/customize_diet_plans_view.dart';
 import 'package:flourish/views/customize_diet_plans/food_diary_view.dart';
 import 'package:flourish/views/customize_diet_plans/meal_plan_view.dart';
+import 'package:flourish/views/diet_details/diet_details_view.dart';
+import 'package:flourish/views/diet_details/item_details_view.dart';
+import 'package:flourish/views/diet_details/mealtype_details_view.dart';
 import 'package:flourish/views/favourites/favourites_view.dart';
-import 'package:flourish/views/home/home_view.dart';
+import 'package:flourish/views/navigation_view.dart';
 import 'package:flourish/views/profile/change_password_view.dart';
 import 'package:flourish/views/profile/edit_profile_view.dart';
 import 'package:flourish/views/settings/pages/about_us.dart';
@@ -77,7 +80,7 @@ List<GetPage<dynamic>>? routes = [
   ),
   GetPage(
     name: '/home',
-    page: () => const HomeView(),
+    page: () => const NavigationView(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),
@@ -138,6 +141,24 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: '/terms&conditions',
     page: () => const TermsAndConditionsView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/dietDetails',
+    page: () => const DietDetailsView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/mealTypeDetails',
+    page: () => const MealtypeDetailsView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/itemDetails',
+    page: () => const ItemDetailsView(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),

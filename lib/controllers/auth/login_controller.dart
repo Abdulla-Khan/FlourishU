@@ -55,30 +55,30 @@ class LoginController extends GetxController {
   }
 
   Future<void> login() async {
-    Get.toNamed('/home');
-    // isLoading.value = true;
-    // try {
-    //   final response = await apiService.postRequest('auth/sign-in', {
-    //     "email": emailController.text,
-    //     "password": passwordController.text,
-    //   });
+    isLoading.value = true;
+    try {
+      final response = await apiService.postRequest('auth/sign-in', {
+        "email": emailController.text,
+        "password": passwordController.text,
+      });
 
-    //   if (response.statusCode == 200) {
-    //     log('Home');
-    //     isLoading.value = false;
-    //   } else if (response.statusCode == 400) {
-    //     log("Incorrect Email/Password");
-    //     isLoading.value = false;
-    //   } else if (response.statusCode == 404) {
-    //     log("Account Not Found");
-    //     isLoading.value = false;
-    //   } else {
-    //     log("Bad Request");
-    //     isLoading.value = false;
-    //   }
-    // } catch (e) {
-    //   isLoading.value = false;
-    //   log(e.toString());
-    // }
+      if (response.statusCode == 200) {
+        Get.toNamed('/home');
+
+        isLoading.value = false;
+      } else if (response.statusCode == 400) {
+        log("Incorrect Email/Password");
+        isLoading.value = false;
+      } else if (response.statusCode == 404) {
+        log("Account Not Found");
+        isLoading.value = false;
+      } else {
+        log("Bad Request");
+        isLoading.value = false;
+      }
+    } catch (e) {
+      isLoading.value = false;
+      log(e.toString());
+    }
   }
 }

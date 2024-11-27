@@ -157,10 +157,10 @@ class ItemDetailsView extends GetView {
                   ),
                 ),
                 SizedBox(height: context.height * 0.01),
-                const ItemsCard(image: 'assets/egg.png', text: "   Whole Egg"),
-                const ItemsCard(image: 'assets/oil.png', text: "   Canola Oil"),
+                const ItemsCard(image: 'assets/egg.png', text: "Whole Egg"),
+                const ItemsCard(image: 'assets/oil.png', text: "Canola Oil"),
                 const ItemsCard(
-                    image: 'assets/clove.png', text: "   Ground Black Pepper"),
+                    image: 'assets/clove.png', text: "Ground Black Pepper"),
               ],
             ),
           ),
