@@ -45,6 +45,7 @@ dependencies:
   jwt_decoder: ^2.0.1
   fluttertoast: ^8.2.8
   flutter_floating_bottom_bar: ^1.2.1+1
+  percent_indicator: ^4.2.4
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/test.png
+    - assets/oil.png
+    - assets/egg.png
+    - assets/clove.png
+    - assets/calories.svg
     - assets/svg.svg
     - assets/healthy-diet.png
     - assets/snack.png
