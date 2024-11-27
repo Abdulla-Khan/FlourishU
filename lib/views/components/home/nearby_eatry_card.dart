@@ -17,7 +17,6 @@ class NeabyEatriesCard extends StatelessWidget {
           return Container(
             margin: EdgeInsets.symmetric(vertical: context.height * 0.01),
             width: context.width,
-            height: context.height * 0.22,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(

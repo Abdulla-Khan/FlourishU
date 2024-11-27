@@ -22,7 +22,10 @@ class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: showLeading
           ? IconButton(
               onPressed: onPressed,
-              icon: const Icon(Icons.arrow_back_ios_new_rounded),
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.black,
+              ),
             )
           : null,
       title: Text(

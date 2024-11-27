@@ -43,7 +43,7 @@ class HistoryView extends GetView<HistoryController> {
                         title: weekDays[index]['value'],
                         date: controller.formattedDate.value,
                         rowText: 'View More',
-                        width: context.width * 0.2,
+                        width: context.width * 0.22,
                       ),
                     );
                   })

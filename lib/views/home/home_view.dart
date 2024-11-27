@@ -51,7 +51,8 @@ class HomeView extends GetView<HomeController> {
               ),
               SizedBox(height: context.height * 0.03),
               CustomButton(
-                text: 'Customize Your Plan  \u{2192}',
+                text: 'Customize Your Plan',
+                showIcon: true,
                 onTap: () => Get.toNamed('/customDiet'),
               ),
               Divider(

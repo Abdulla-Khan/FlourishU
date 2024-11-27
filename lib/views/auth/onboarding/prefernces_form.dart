@@ -29,6 +29,7 @@ class PreferncesFormView extends GetView<OnboardingController> {
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: context.width * 0.04,
+            vertical: context.height * 0.02,
           ),
           child: Obx(
             () => Column(

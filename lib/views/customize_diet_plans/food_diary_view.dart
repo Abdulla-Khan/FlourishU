@@ -37,7 +37,7 @@ class FoodDiaryView extends GetView<CustomizeDietPlansController> {
                       width: context.width,
                       height: i['isSelected']
                           ? context.height * 0.6
-                          : context.height * 0.055,
+                          : context.height * 0.06,
                       margin: EdgeInsets.symmetric(
                           vertical: context.height * 0.008),
                       decoration: ShapeDecoration(

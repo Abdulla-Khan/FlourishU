@@ -11,6 +11,7 @@ class CustomButton extends StatelessWidget {
       this.width,
       this.color = textBtnColor,
       this.textColor = Colors.white,
+      this.showIcon = false,
       this.borderColor});
   final String text;
   final Function()? onTap;
@@ -18,6 +19,7 @@ class CustomButton extends StatelessWidget {
   final Color color;
   final Color textColor;
   final Color? borderColor;
+  final bool showIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +35,25 @@ class CustomButton extends StatelessWidget {
             border: Border.all(
               color: borderColor ?? color,
             )),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: textColor,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            showIcon
+                ? const Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: Colors.white,
+                    size: 14,
+                  )
+                : const SizedBox.shrink(),
+          ],
         ),
       ),
     );
