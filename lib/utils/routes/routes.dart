@@ -17,6 +17,7 @@ import 'package:flourish/views/favourites/favourites_view.dart';
 import 'package:flourish/views/navigation_view.dart';
 import 'package:flourish/views/profile/change_password_view.dart';
 import 'package:flourish/views/profile/edit_profile_view.dart';
+import 'package:flourish/views/restaurants_details/restaurants_detail_view.dart';
 import 'package:flourish/views/settings/pages/about_us.dart';
 import 'package:flourish/views/settings/pages/customer_service_view.dart';
 import 'package:flourish/views/settings/pages/privacy_policy_view.dart';
@@ -159,6 +160,12 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: '/itemDetails',
     page: () => const ItemDetailsView(),
+    transition: Transition.fade,
+    transitionDuration: const Duration(milliseconds: 200),
+  ),
+  GetPage(
+    name: '/restaurantDetails',
+    page: () => const RestaurantsDetailView(),
     transition: Transition.fade,
     transitionDuration: const Duration(milliseconds: 200),
   ),

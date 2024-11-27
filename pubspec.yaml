@@ -85,6 +85,7 @@ flutter:
     - assets/logo/
     - assets/home/
     - assets/onboarding/
+    - assets/restaurant/
     - assets/onboarding/schools/
   #   - images/a_dot_ham.jpeg
 
